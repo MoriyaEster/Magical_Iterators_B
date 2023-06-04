@@ -1,6 +1,8 @@
 #include "doctest.h"
 #include "sources/MagicalContainer.hpp"
 #include <stdexcept>
+#include <stdio.h>
+#include <iostream>
 
 using namespace ariel;
 using namespace std;
@@ -587,7 +589,7 @@ TEST_CASE("operator= throws when iterators are pointing at different containers"
 
         CHECK_THROWS_AS(it1 = it2, std::runtime_error);
    }
-   SUBCASE("AscendingIterator")
+   SUBCASE("PrimeIterator")
    {
         MagicalContainer::PrimeIterator it1(container1);
         MagicalContainer::PrimeIterator it2(container2);
