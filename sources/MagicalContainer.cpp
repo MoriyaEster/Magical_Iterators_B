@@ -220,10 +220,15 @@ int MagicalContainer::SideCrossIterator::operator*()
 
 MagicalContainer::SideCrossIterator &MagicalContainer::SideCrossIterator::operator++()
 {
-    // if (index == this->end().index)
-    // {
-    //     throw std::runtime_error("You are in the last element");
-    // }
+    if (index == container->mContainer.size())
+    {
+        throw std::runtime_error("You are in the last element");
+    }
+    if (index == (container->mContainer.size() / 2))
+    {
+        index = container->mContainer.size();
+        return *this;
+    }
 
     if (index < (container->mContainer.size() / 2))
     {
@@ -249,7 +254,7 @@ MagicalContainer::SideCrossIterator MagicalContainer::SideCrossIterator::begin()
 MagicalContainer::SideCrossIterator MagicalContainer::SideCrossIterator::end()
 {
     SideCrossIterator iter(*container);
-    iter.index = (container->mContainer.size() / 2);
+    iter.index = (container->mContainer.size());
     return iter;
 }
 
